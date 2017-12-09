@@ -18,9 +18,13 @@ set(CMAKE_COLOR_MAKEFILE ON)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
 
 find_package(OpenGL REQUIRED)
-find_package(SFML 2.2 COMPONENTS graphics window system)
+find_package(SFML 2.1 COMPONENTS graphics window system)
 
 file(GLOB IMGUI_SFML_SOURCES "${PROJECT_SOURCE_DIR}/*.cpp" "${PROJECT_SOURCE_DIR}/*.h")
+
+message(STATUS "SFML include directories: ${SFML_INCLUDE_DIR}")
+message(STATUS "SFML dependencies: ${SFML_DEPENDENCIES}")
+message(STATUS "SFML libraries: ${SFML_LIBRARIES}")
 
 include_directories(
   ${PROJECT_SOURCE_DIR}
