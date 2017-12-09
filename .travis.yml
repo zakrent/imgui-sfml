@@ -28,4 +28,6 @@ script:
   - mkdir build
   - cd build
   - /opt/cmake/bin/cmake ..
+  - ls /usr/include/SFML
+  - ls /usr/include/SFML/Window
   - make
