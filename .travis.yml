@@ -24,6 +24,7 @@ install:
   - sudo make install
 
 script:
+  - cd $TRAVIS_BUILD_DIR
   - mkdir build
   - cd build
   - /opt/cmake/bin/cmake ..
