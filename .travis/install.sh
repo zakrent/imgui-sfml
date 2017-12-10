@@ -4,7 +4,7 @@ if [ "$TRAVIS_OS_NAME" == "osx" ]; then
   brew install sfml
 fi
 
-if [ "$TRAVIS_OS_NAME" == "osx" ]; then
+if [ "$TRAVIS_OS_NAME" == "linux" ]; then
   # Install CMake 3.10
   cd /tmp/cmake/cmake-3.10.0/
   ./configure --prefix=/opt/cmake
