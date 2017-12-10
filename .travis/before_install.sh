@@ -2,11 +2,11 @@
 
 # TODO: GCC 7
 
-if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+if [ "$TRAVIS_OS_NAME" == "osx" ]; then
   brew update
 fi
 
-if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+if [ "$TRAVIS_OS_NAME" == "linux" ]; then
   # For C++17 we need newer CMake
   mkdir /tmp/cmake
   wget https://cmake.org/files/v3.10/cmake-3.10.0.tar.gz -P /tmp/cmake/

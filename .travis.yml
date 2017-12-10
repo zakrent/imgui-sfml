@@ -19,5 +19,6 @@ install:
 script:
   - mkdir build
   - cd build
-  - /opt/cmake/bin/cmake ..
+  - [[ "$TRAVIS_OS_NAME" == "linux" ]]; then /opt/cmake/bin/cmake .. ; fi
+  - [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cmake .. ; fi
   - make
