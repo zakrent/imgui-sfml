@@ -1,42 +1,18 @@
-# TODO: OSX support
-# TODO: GCC 7
 language: cpp
-compiler: gcc
-sudo: true
-dist: trusty
+compiler:
+  - gcc
 
-os:
-  - linux
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      sudo: required
 
 before_install:
-  # For C++17 we need newer CMake
-  - mkdir /tmp/cmake
-  - wget https://cmake.org/files/v3.10/cmake-3.10.0.tar.gz -P /tmp/cmake/
-  - cd /tmp/cmake
-  - tar xzf cmake-3.10.0.tar.gz
-  - cd $TRAVIS_BUILD_DIR
-
-  # Newer version of GCC
-  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
-
-  # SFML 2.3 (instead of 2.1 in Trusty)
-  - sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu xenial universe"
-  - sudo apt-get update -qq
+  - sh .travis/before_install.sh
 
 install: 
-  # Install CMake 3.10
-  - cd /tmp/cmake/cmake-3.10.0/
-  - ./configure --prefix=/opt/cmake
-  - make
-  - sudo make install
-  - cd $TRAVIS_BUILD_DIR
-
-  # Install SFML 2.3
-  - sudo apt-get install -y libsfml-dev
-
-  # Install g++-6 and set as default version
-  - sudo apt-get install -qq g++-6
-  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 90
+  - sh .travis/install.sh
 
 script:
   - mkdir build
