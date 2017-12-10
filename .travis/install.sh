@@ -2,7 +2,7 @@
 
 if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
   brew install sfml
-; fi
+fi
 
 if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
   # Install CMake 3.10
@@ -19,4 +19,4 @@ if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
   sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 90
   
   cd $TRAVIS_BUILD_DIR
-; fi
+fi

@@ -4,7 +4,7 @@
 
 if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
   brew update
-; fi
+fi
 
 if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
   # For C++17 we need newer CMake
@@ -21,4 +21,4 @@ if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
   sudo apt-get update -qq
   
   cd $TRAVIS_BUILD_DIR
-; fi
+fi
