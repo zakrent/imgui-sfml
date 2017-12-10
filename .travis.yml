@@ -12,7 +12,9 @@ before_install:
   # For C++17 we need newer CMake
   - mkdir /tmp/cmake
   - wget https://cmake.org/files/v3.10/cmake-3.10.0.tar.gz -P /tmp/cmake/
+  - cd /tmp/cmake
   - tar xzf cmake-3.10.0.tar.gz
+  - cd $TRAVIS_BUILD_DIR
 
   # Newer version of GCC
   - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
