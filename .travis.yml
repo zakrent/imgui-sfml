@@ -1,3 +1,5 @@
+# TODO: OSX support
+# TODO: GCC 7
 language: cpp
 compiler: gcc
 sudo: true
@@ -7,28 +9,35 @@ os:
   - linux
 
 before_install:
+  # For C++17 we need newer CMake
+  - mkdir /tmp/cmake
+  - wget https://cmake.org/files/v3.10/cmake-3.10.0.tar.gz -P /tmp/cmake/
+  - tar xzf cmake-3.10.0.tar.gz
+
+  # Newer version of GCC
   - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+
+  # SFML 2.3 (instead of 2.1 in Trusty)
   - sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu xenial universe"
   - sudo apt-get update -qq
 
 install: 
-  - sudo apt-get install -y libsfml-dev
-  - sudo apt-get install -qq g++-6
-  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 90
-  - mkdir /tmp/cmake
-  - cd /tmp/cmake
-  - wget https://cmake.org/files/v3.10/cmake-3.10.0.tar.gz
-  - tar xzf cmake-3.10.0.tar.gz
-  - cd cmake-3.10.0/
+  # Install CMake 3.10
+  - cd /tmp/cmake/cmake-3.10.0/
   - ./configure --prefix=/opt/cmake
   - make
   - sudo make install
+  - cd $TRAVIS_BUILD_DIR
+
+  # Install SFML 2.3
+  - sudo apt-get install -y libsfml-dev
+
+  # Install g++-6 and set as default version
+  - sudo apt-get install -qq g++-6
+  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 90
 
 script:
-  - cd $TRAVIS_BUILD_DIR
   - mkdir build
   - cd build
   - /opt/cmake/bin/cmake ..
-  - ls /usr/include/SFML
-  - ls /usr/include/SFML/Window
   - make
