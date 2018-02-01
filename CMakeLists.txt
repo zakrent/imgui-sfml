@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.2)
-project(imgui-sfml VERSION 1.0)
+project(imgui-sfml VERSION 1.53) # ImGui version
 
 set(CMAKE_CXX_STANDARD 11)
 set(CXX_STANDARD_REQUIRED ON)
